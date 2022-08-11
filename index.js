@@ -1,5 +1,4 @@
 // Aula 01
-
 //Primeiro exemplo: Imprimindo texto no terminal (PowerShell)
 console.log("Olá, Toti!")
 
@@ -31,7 +30,6 @@ server.listen(3000);
 console.log('Servidor funcionando. Acesse: localhost:3000');
 
 //Aula 02: Trabalhando com métodos HTTP e rotas
-
 const http = require('http');
 
 const server = http.createServer(function (req, res) {
@@ -67,3 +65,38 @@ const server = http.createServer(function (req, res) {
 })
 server.listen(3000)
 console.log('Servidor funcionando. Acesse: localhost:3000');
+
+// Cógido simplificado método GET e rotas
+const http = require('http');
+
+const server = http.createServer(function(req, res){
+    if(req.method === 'GET'){
+        if(req.url === '/'){
+            res.writeHead(200, {'Content-type': 'text/html; charset=utf-8'})
+            res.end('<h1> Página Inicial </h1>')
+        }else if(req.url === '/produtos'){
+            res.writeHead(200, {'Content-type': 'text/html; charset=utf-8'})
+            res.end('<h1> Produtos </h1>')
+        }else if(req.url === '/contato'){
+            res.writeHead(200, {'Content-type': 'text/html; charset=utf-8'})
+            res.end('<h1> Contato </h1>')
+        }else if(req.url === '/login'){
+            res.writeHead(200, {'Content-type': 'text/html; charset=utf-8'})
+            res.end('<h1> Login </h1>')
+        }else{
+            res.writeHead(200, {'Content-type': 'text/html; charset=utf-8'})
+            res.end('<h1> Rota não encontrada</h1>')
+        }
+    }else{
+        res.writeHead(400, {'Content-type': 'text/html; charset=utf-8'})
+    }
+})
+
+server.listen(3000)
+console.log('Servidor funcionando. Acesse localhost:3000')
+
+// Código de instalação express e nodemon através do npm (executar esses comandos no PowerShell ou aplicação similar)
+
+npm init -y
+npm install express –save
+npm install nodemon --save-dev

@@ -156,23 +156,12 @@ Invoke-RestMethod -Uri http://localhost:3000/produtos -Method Get
 Invoke-RestMethod -Uri http://localhost:3000/cadastro -Method Post
 Invoke-RestMethod -Uri http://localhost:3000/atualizarperfil -Method Put
 Invoke-RestMethod -Uri http://localhost:3000/deletarconta -Method Delete
-{
-  "name": "nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev" : "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Hilary Santos",
-  "license": "ISC"
-}
-//Após definir a mudança no arquivo acima, você pode rodar no PowerShell o comando "npm run dev" que vai continuamente rodar o seu index.js
 
-//Comandos do PowerShell para testar os métodos HTTP GET, POST, PUT E DELETE:
 
-Invoke-RestMethod -Uri http://localhost:3000 -Method Get
-http://localhost:3000/produtos -Method Get
-Invoke-RestMethod -Uri http://localhost:3000/cadastro -Method Post
+//Comandos do Linux para testar os métodos HTTP GET, POST, PUT E DELETE:
+
+curl -X GET http://localhost:3000
+curl -X GET http://localhost:3000/produtos
+curl -X POST http://localhost:3000/cadastro
+curl -X PUT http://localhost:3000/atualizarperfil
+curl -X DELETE http://localhost:3000/deletarconta

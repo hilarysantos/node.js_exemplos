@@ -1,5 +1,11 @@
 // Aula 04
 
+//Código para instalação do ejs no PowerShell: 
+
+npm install ejs
+
+//Códigos do index.js feitos na aula:
+
 const express = require('express')
 const app = express()
 

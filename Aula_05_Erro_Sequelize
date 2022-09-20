@@ -1,0 +1,31 @@
+const express = require('express')
+const app = express()
+const { Sequelize, DataTypes } = require('sequelize')
+const Toti = require('./models/toti')
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: 'my-database.db'
+})
+const totis = Toti(sequelize, DataTypes)
+
+app.use(express.static('./views'))
+app.set('view engine', 'ejs')
+
+app.get('/toti', async (req, res) => {
+    const allTotis = await sequelize.query('SELECT * FROM Totis')
+    res.json({ allTotis })
+})
+
+app.post('/cadastro', async (req, res) => {
+    const name = req.body
+    try{
+        await totis.create(name)
+        res.status(201).json({ action: 'Adding new name', name })
+    }catch(err){
+        res.status(412).json({message: err.message})
+    }
+})
+
+app.listen(8080, () => {
+    console.log('Servidor funcionando. Acesse: localhost:8080')
+})
